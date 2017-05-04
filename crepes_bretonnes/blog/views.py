@@ -11,3 +11,6 @@ def date_actuelle(request):
 
 def view_article(request, article_id):
     return HttpResponse("Affichage de l'article {0}".format(article_id))
+
+def list_articles(request, month, year):
+    return HttpResponse("Liste des articles de {0}/{1}".format(month, year))
