@@ -10,19 +10,24 @@
 		<link rel="stylesheet" href="{% get_static_prefix %}css/footer.css" />
 		<title>{% block title %}Mon blog sur les crêpes bretonnes{% endblock %}</title>
 	</head>
-	<body class="container">
+	<body class="container-fluid">
 		<header>
-			<h1>Crêpes bretonnes</h1>
 		</header>
-		<nav>
-			{% block nav %}
-			<ul>
-				<li><a href="/">Accueil</a></li>
-				<li><a href="/blog/">Blog</a></li>
-				<li><a href="/contact/">Contact</a></li>
-			 </ul>
-			 {% endblock %}
+		{% block nav %}
+		<nav class="navbar row sticky-top navbar-toggleable-md navbar-light bg-faded">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="/">Crêpes Bretonnes</a>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link active" href="/">Accueil</a>
+					<a class="nav-item nav-link" href="/blog/">Blog</a>
+					<a class="nav-item nav-link" href="/contact/">Contact</a>
+				</div>
+			</div>
 		</nav>
+		{% endblock %}
 		<section id="content">
 			{% block content %}{% endblock %}
 		</section>
