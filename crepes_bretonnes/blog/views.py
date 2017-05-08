@@ -11,8 +11,8 @@ def blog_home(request):
 def date(request):
 	return render(request, 'blog/date.html', {'date' : datetime.now()})
 
-def view_post(request, post_id):
-	post = get_object_or_404(Post, id=post_id)
+def view_post(request, id, slug):
+	post = get_object_or_404(Post, id=id, slug=slug)
 	return render(request, 'blog/view_post.html', locals())
 
 def list_posts(request, year, month):
