@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>{{post.title}}</h2>
-<p><em>Article écrit par {{post.author}}</em></p>
-<p>{{post.content}}</p>
+<h1>{{ post.title }} <span class="small">dans {{ post.category.name }}</span></h1>
+<p class="infos">Rédigé par {{ post.author }}, le {{ post.date|date:"DATE_FORMAT" }}</p>
+<div class="contenu">{{ post.content|linebreaks }}</div>
 {% endblock %}
