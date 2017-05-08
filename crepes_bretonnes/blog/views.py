@@ -4,10 +4,11 @@ from datetime import datetime
 from .models import Post
 
 # Create your views here.
-def bloghome(request):
-	return render(request, 'blog/accueil.html')
+def blog_home(request):
+	posts = Post.objects.all()
+	return render(request, 'blog/home.html', locals())
 
-def date_actuelle(request):
+def date(request):
 	return render(request, 'blog/date.html', {'date' : datetime.now()})
 
 def view_post(request, post_id):
