@@ -11,7 +11,8 @@ def date_actuelle(request):
 	return render(request, 'blog/date.html', {'date' : datetime.now()})
 
 def view_post(request, post_id):
-    return render(request, 'blog/view_post.html', locals())
+	post = Post.objects.get(id=post_id)
+	return render(request, 'blog/view_post.html', locals())
 
 def list_posts(request, year, month):
     return HttpResponse("Liste des articles de {0}/{1}".format(month, year))
