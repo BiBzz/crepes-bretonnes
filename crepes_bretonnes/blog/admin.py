@@ -5,13 +5,22 @@ from django.utils.text import Truncator
 # Register your models here.
 
 class PostAdmin(admin.ModelAdmin):
-	list_display = ( 'title', 'author', 'date', 'display_excerpt' )
-	list_filter = ( 'author', 'category', )
+	list_display = ('title', 'author', 'date', 'display_excerpt')
+	list_filter = ('author', 'category',)
 	date_hierarchy = 'date'
-	ordering = ( 'date', )
-	search_fields = ( 'title', 'content' )
+	ordering = ('date',)
+	search_fields = ('title', 'content')
 
-	fields = ('title', 'slug', 'author', 'category', 'content' )
+	fieldsets = (
+		('General', {
+			'classes': ['collapse',],
+			'fields': ('title', 'author', 'category')
+		}),
+		('Post content', {
+			'description': 'Le formulaire accepte les balises HTML. Utilisez les à bon escient !',
+			'fields': ('content',)
+			}),
+	)
 
 	def display_excerpt(self, post):
 		return Truncator(post.content).chars(40, truncate='...')
