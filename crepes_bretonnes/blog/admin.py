@@ -14,7 +14,7 @@ class PostAdmin(admin.ModelAdmin):
 	fieldsets = (
 		('General', {
 			'classes': ['collapse',],
-			'fields': ('title', 'author', 'category')
+			'fields': ('title', 'slug', 'author', 'category')
 		}),
 		('Post content', {
 			'description': 'Le formulaire accepte les balises HTML. Utilisez les à bon escient !',
@@ -22,11 +22,14 @@ class PostAdmin(admin.ModelAdmin):
 			}),
 	)
 
+	prepopulated_fields = {'slug': ('title',)}
+
 	def display_excerpt(self, post):
 		return Truncator(post.content).chars(40, truncate='...')
 
-
 	display_excerpt.short_description = "Aperçu du contenu"
+
+
 
 admin.site.register(Category)
 admin.site.register(Post, PostAdmin)
