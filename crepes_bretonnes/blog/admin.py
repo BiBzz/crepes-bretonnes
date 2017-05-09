@@ -11,6 +11,8 @@ class PostAdmin(admin.ModelAdmin):
 	ordering = ( 'date', )
 	search_fields = ( 'title', 'content' )
 
+	fields = ('title', 'slug', 'author', 'category', 'content' )
+
 	def display_excerpt(self, post):
 		return Truncator(post.content).chars(40, truncate='...')
 
