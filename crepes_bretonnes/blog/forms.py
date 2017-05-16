@@ -17,3 +17,9 @@ class ContactForm(forms.Form):
                 self.add_error("message", msg)
 
         return cleaned_data
+
+class NewContactForm(forms.Form):
+    name = forms.CharField()
+    address = forms.CharField(widget=forms.Textarea)
+    picture = form.ImageField()
+
