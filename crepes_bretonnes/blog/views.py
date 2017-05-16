@@ -20,3 +20,13 @@ def list_posts(request, year, month):
 
 def redirect_list_posts(request, year, month):
 	return redirect(list_posts, year=year, month=month)
+
+def contact(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        subject = form.cleaned_data['subject']
+        message = form.cleaned_data['message']
+        sender_mail = form.cleaned_data['sender_mail']
+        confirmation = form.cleaned_data['confirmation']
+        form_sent = True
+    return render(request, 'contact.html', locals())
